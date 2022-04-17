@@ -1,12 +1,12 @@
 package io.msa.ratingsdataservice.resources;
 
 import io.msa.ratingsdataservice.models.Rating;
+import io.msa.ratingsdataservice.models.UserRating;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
-import java.util.List;
 
 @RestController
 @RequestMapping("/ratingsdata")
@@ -18,8 +18,8 @@ public class RatingsResource {
     }
 
     @RequestMapping("users/{userId}")
-    public List<Rating> getUserRatings(@PathVariable("userId") String userId) {
-        return Arrays.asList(new Rating("1234", 4), new Rating("5678", 3));
+    public UserRating getUserRatings(@PathVariable("userId") String userId) {
+        return new UserRating(Arrays.asList(new Rating("1234", 4), new Rating("5678", 3)));
     }
 
 }
